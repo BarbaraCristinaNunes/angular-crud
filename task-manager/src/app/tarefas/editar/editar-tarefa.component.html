@@ -25,6 +25,7 @@
         type="submit"
         class="btn btn-success"
         (click)="atualizar()"
+        [disabled]="!formTarefa.form.valid"
         value="Atualizar">
       <a [routerLink]="['/tarefas']" routerLinkActive="router-link-active"
         class="btn btn-default">
