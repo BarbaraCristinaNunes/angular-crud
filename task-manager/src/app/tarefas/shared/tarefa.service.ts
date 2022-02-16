@@ -8,7 +8,7 @@ export class TarefaService {
 
   constructor() { }
 
-  listartTodos(): Tarefa[]
+  listarTodos(): Tarefa[]
   {
     const tarefas = localStorage['tarefas'];
     return tarefas ? JSON.parse(tarefas): [];
@@ -16,7 +16,7 @@ export class TarefaService {
 
   cadastrar(tarefa: Tarefa): void
   {
-    const tarefas = this.listartTodos();
+    const tarefas = this.listarTodos();
     tarefa.id = new Date().getTime();
     tarefas.push(tarefa);
     localStorage['tarefas'] = JSON.stringify(tarefas);
@@ -24,13 +24,13 @@ export class TarefaService {
 
   buscarPorID(id: number): Tarefa
   {
-    const tarefas: Tarefa [] = this.listartTodos();
+    const tarefas: Tarefa [] = this.listarTodos();
     return tarefas.find(tarefa => tarefa.id === id);
   }
 
   atualizar(tarefa: Tarefa): void
   {
-    const tarefas: Tarefa [] = this.listartTodos();
+    const tarefas: Tarefa [] = this.listarTodos();
     tarefas.forEach((obj, index, objs) => {
       if(tarefa.id === obj.id) {
         objs[index] = tarefa;
@@ -41,7 +41,7 @@ export class TarefaService {
 
   remover(id: number): void
   {
-    let tarefas: Tarefa [] = this.listartTodos();
+    let tarefas: Tarefa [] = this.listarTodos();
     tarefas = tarefas.filter(tarefa => tarefa.id !== id);
     localStorage['tarefa'] = JSON.stringify(tarefas);
 
@@ -49,7 +49,7 @@ export class TarefaService {
 
   alterarStatus(id: number): void
   {
-    const tarefas: Tarefa [] = this.listartTodos();
+    const tarefas: Tarefa [] = this.listarTodos();
     tarefas.forEach((obj, index, objs) => {
       if(id === obj.id){
         objs[index].concluida = !obj.concluida;
