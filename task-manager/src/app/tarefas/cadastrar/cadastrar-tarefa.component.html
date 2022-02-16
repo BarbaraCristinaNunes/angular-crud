@@ -17,7 +17,7 @@
         <div [hidden]="!nome.errors.required">
           Digite a tarefa.
         </div>
-        <div [hidden]="nome.errors.minlength">
+        <div [hidden]="!nome.errors.minlength">
           A tarefa deve conter ao menos 5 caracteres.
         </div>
       </div>
